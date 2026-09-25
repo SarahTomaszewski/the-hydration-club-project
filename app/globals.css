@@ -10,7 +10,15 @@
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-open-sans);
+  --font-sans: var(--font-montserrat);
+  --font-serif: var(--font-cormorant);
+  --font-script: var(--font-script-face);
+  --font-accent: var(--font-accent-face);
+  /* RALLY brand tones that sit alongside the CMS --event-* colors */
+  --color-deep: #202b19;
+  --color-clay: #bd4325;
+  --color-citrus: #e6d25c;
+  --color-ink: #121411;
   --font-mono: monospace;
   --font-heading: var(--font-sans);
   --font-body: var(--font-sans);
@@ -130,5 +138,103 @@
   }
   html {
     @apply font-sans;
+  }
+}
+
+/* ---------- RALLY / The Hydration Club ---------- */
+
+/* The page is dark green throughout; <PageTint> swaps it to clay while the
+   scenes carousel is centered in view. */
+:root {
+  --page-bg: #202b19; /* deep green */
+}
+html.page-clay {
+  --page-bg: #bd4325; /* clay */
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+@keyframes rally-rise {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+.rally-hero-in > * {
+  animation: rally-rise 1s cubic-bezier(0.2, 0.7, 0.2, 1) both;
+}
+.rally-hero-in > *:nth-child(2) {
+  animation-delay: 0.12s;
+}
+.rally-hero-in > *:nth-child(3) {
+  animation-delay: 0.24s;
+}
+.rally-hero-in > *:nth-child(4) {
+  animation-delay: 0.36s;
+}
+
+/* Scroll-linked reveal where supported; content is fully visible elsewhere. */
+@supports (animation-timeline: view()) {
+  .rally-reveal {
+    animation: rally-rise linear both;
+    animation-timeline: view();
+    animation-range: entry 0% entry 40%;
+  }
+}
+
+/* Ball cursor: the native pointer hides only once <BallCursor> is running */
+@media (pointer: fine) {
+  html.rally-cursor,
+  html.rally-cursor * {
+    cursor: none !important;
+  }
+  html.rally-cursor input:not([type="checkbox"]):not([type="radio"]),
+  html.rally-cursor textarea {
+    cursor: text !important;
+  }
+}
+
+/* Locker tags swing from their punch hole on hover */
+@keyframes rally-swing {
+  0%,
+  100% {
+    rotate: 0deg;
+  }
+  15% {
+    rotate: -4deg;
+  }
+  35% {
+    rotate: 3deg;
+  }
+  55% {
+    rotate: -2deg;
+  }
+  75% {
+    rotate: 1deg;
+  }
+}
+
+.rally-swing {
+  transform-origin: 50% 1.5rem;
+}
+.rally-swing:hover {
+  animation: rally-swing 0.9s ease-in-out;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  .rally-hero-in > *,
+  .rally-reveal,
+  .rally-swing:hover {
+    animation: none;
   }
 }

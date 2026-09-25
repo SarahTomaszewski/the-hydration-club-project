@@ -114,7 +114,12 @@ export function RegistrationForm({
         const name = fieldName(field.id);
 
         return (
-          <div key={field.id} className="grid w-full gap-1.5">
+          <div
+            key={field.id}
+            className={`grid w-full gap-1.5 ${
+              field.inputType === "checkbox" && !singleField ? "col-span-2" : ""
+            }`}
+          >
             <Label htmlFor={field.id}>
               {field.title}
               {field.required ? " *" : ""}
@@ -191,7 +196,7 @@ export function RegistrationForm({
           type="submit"
           disabled={isPending}
           size="lg"
-          className="min-h-12 min-w-48 rounded-(--event-border-radius) bg-(--event-primary-bg) text-base font-semibold text-(--event-primary-text) hover:bg-(--event-primary-bg)/85"
+          className="min-h-12 min-w-48 rounded-(--event-border-radius) bg-deep text-base font-semibold text-(--event-primary-text) hover:bg-deep/85"
         >
           {isPending
             ? "Submitting..."

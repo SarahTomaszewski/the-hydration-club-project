@@ -16,7 +16,7 @@ export function Footer({ baseBackgroundColor }: FooterProps) {
   const logo = isOnDarkBackground ? "/logos/logo-white.svg" : "/logos/logo.svg";
 
   return (
-    <footer className="z-10 mt-auto w-full px-4 py-6 md:px-10 md:py-8">
+    <div className="z-10 mt-auto w-full px-4 py-6 md:px-10 md:py-8">
       <div className="flex items-center justify-center">
         <a
           href={ARRIVED_URL}
@@ -44,7 +44,7 @@ export function Footer({ baseBackgroundColor }: FooterProps) {
           </span>
         </a>
       </div>
-    </footer>
+    </div>
   );
 }
 

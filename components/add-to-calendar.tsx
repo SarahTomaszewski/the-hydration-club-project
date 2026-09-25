@@ -71,7 +71,7 @@ export function AddToCalendar({ event, className }: AddToCalendarProps) {
       <button
         type="button"
         onClick={() => setOpen((o) => !o)}
-        className="min-h-12 rounded-(--event-border-radius) bg-(--event-primary-bg) text-base font-semibold text-(--event-primary-text) hover:bg-(--event-primary-bg)/85 px-5 py-3 transition"
+        className="min-h-12 rounded-full bg-(--event-accent-bg) px-7 py-3 text-xs font-semibold tracking-[0.2em] text-deep uppercase transition hover:bg-(--event-base-bg)"
       >
         Add to Calendar
       </button>

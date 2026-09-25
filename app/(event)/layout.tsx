@@ -1,20 +1,47 @@
 import type { CSSProperties } from "react";
 import type { Metadata } from "next";
-import { Open_Sans } from "next/font/google";
+import {
+  Cormorant_Garamond,
+  Libre_Baskerville,
+  Montserrat,
+  Pinyon_Script,
+} from "next/font/google";
 import "../globals.css";
 
 import { EventShell } from "@/components/event-shell";
 import { styleValue } from "@/components/helpers";
 import { PreviewBanner } from "@/components/preview-banner";
+import { BallCursor } from "@/components/rally/ball-cursor";
 import { isPreviewRequest, resolveEventEnv } from "@/lib/happily/config";
 import { getPublicEvent } from "@/lib/happily/queries";
 
 // First-party analytics proxy host.
 const ANALYTICS_HOST = "https://hx.happily.events";
 
-const openSans = Open_Sans({
-  variable: "--font-open-sans",
+const montserrat = Montserrat({
+  variable: "--font-montserrat",
   subsets: ["latin"],
+});
+
+const cormorant = Cormorant_Garamond({
+  variable: "--font-cormorant",
+  subsets: ["latin"],
+  weight: ["400", "500"],
+});
+
+// Italic accent for the single contrasting word inside a headline
+const accent = Libre_Baskerville({
+  variable: "--font-accent-face",
+  subsets: ["latin"],
+  weight: "400",
+  style: "italic",
+});
+
+// Script face for the event name and section titles
+const script = Pinyon_Script({
+  variable: "--font-script-face",
+  subsets: ["latin"],
+  weight: "400",
 });
 
 export async function generateMetadata(): Promise<Metadata> {
@@ -62,10 +89,11 @@ export default async function EventLayout({
   return (
     <html
       lang="en"
-      className={`${openSans.variable} ${openSans.className} h-full antialiased`}
+      className={`${montserrat.variable} ${cormorant.variable} ${script.variable} ${accent.variable} ${montserrat.className} h-full antialiased`}
     >
       <body style={eventVars} className="min-h-full flex flex-col">
         {preview && <PreviewBanner />}
+        <BallCursor />
         {analyticsId && (
           <script
             defer

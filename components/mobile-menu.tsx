@@ -67,7 +67,7 @@ export function MobileMenu({ nav, ctaText, ctaHref }: MobileMenuProps) {
               <ScrollLink
                 href={ctaHref}
                 onAfterScroll={() => setOpen(false)}
-                className="block rounded-(--event-border-radius) bg-(--event-primary-bg) px-4 py-3 text-center font-semibold text-(--event-primary-text)"
+                className="block rounded-full bg-deep px-4 py-3 text-center text-xs font-semibold tracking-[0.2em] text-(--event-primary-text) uppercase"
               >
                 {ctaText}
               </ScrollLink>
