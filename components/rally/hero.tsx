@@ -180,8 +180,8 @@ export function RallyHero({ event, showCta }: RallyHeroProps) {
             <div className="grid grid-cols-2 gap-4 lg:col-span-7 lg:col-start-6">
               <div className="relative aspect-[1/1.03] overflow-hidden rounded-2xl">
                 <Image
-                  src="/images/club-ball-basket.jpg"
-                  alt="A basket of tennis balls and a racket on a green court"
+                  src="/images/club-clay-court-balls.jpg"
+                  alt="Tennis balls scattered across a clay court beneath the palms"
                   fill
                   sizes="(min-width: 1024px) 28vw, 45vw"
                   className="object-cover"
